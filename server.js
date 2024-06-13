@@ -2,7 +2,6 @@ const express = require("express");
 const mysql2 = require("mysql2/promise");
 const cors = require("cors");
 const lineRouter = require("./Routers/line");
-const { default: axios } = require("axios");
 
 require("dotenv").config();
 
