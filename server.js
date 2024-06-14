@@ -8,10 +8,9 @@ require("dotenv").config();
 const app = express();
 
 const corsOptions = {
-	origin: "http://localhost:3000", // 允許來自此來源的請求
+	origin: process.env.CORS_ORIGIN || "http://localhost:3000", // 允許來自此來源的請求
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	credentials: true, // 如果需要處理 cookies 等
-	optionsSuccessStatus: 204,
+	optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
