@@ -14,11 +14,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.options("*", cors(corsOptions));
 
 app.use("/api", lineRouter);
 app.use("/api", servicesRouter);
 
-app.options("/api/submitForm", cors(corsOptions));
 app.listen(5001, () => {
 	console.log("server is running 5001");
 });
