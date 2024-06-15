@@ -7,7 +7,7 @@
 ## 項目概述
 
 這是一個使用 Node.js 構建的實踐項目，包括基本的服務器設置並整合了 LINE Bot
-SDK、PostgreSQL 資料庫和其他 Node.js 庫。
+SDK、PostgreSQL 資料庫和其他 Node.js 庫，並使用 heroku 部署。
 
 ## 系統要求
 
