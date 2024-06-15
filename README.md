@@ -1,5 +1,10 @@
 # Node Practice
 
+[![Node.js](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Eazychen/node-practice)](https://github.com/Eazychen/node-practice)
+[![License ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![Dependencies Status](https://img.shields.io/david/Eazychen/node-practice)](https://david-dm.org/Eazychen/node-practice)
+
 ## 項目概述
 
 這是一個使用 Node.js 構建的實踐項目，包括基本的服務器設置並整合了 LINE Bot
@@ -15,10 +20,10 @@ SDK、PostgreSQL 資料庫和其他 Node.js 庫。
 要在本地安裝和運行這個項目，請按照以下步驟操作：
 
 1. clone 存儲庫或下載並解壓縮這個項目。
-2. 在項目根目錄中打開終端。
-3. 運行 `npm install` 安裝依賴。
+2. cd 到資料夾中。
+3. 運行 `npm install` 安裝套件。
 4. 創建 `.env` 文件並根據 `.env.example`（如果有的話）設定環境變量。
-5. 運行 `npm start` 啟動服務器，這將使用 `nodemon` 來監控文件變化並重新加載。
+5. 運行 `npm start` 啟動伺服器，這將使用 `nodemon` 來監控文件變化並重新加載。
 
 ## 如何使用
 
@@ -29,7 +34,7 @@ SDK、PostgreSQL 資料庫和其他 Node.js 庫。
 
 請根據你的需要擴展和修改這些路由。
 
-## 套件使用
+## 有使用的套件
 
 - `express`: Web 框架
 - `pg`: PostgreSQL 的 Node.js 客戶端
