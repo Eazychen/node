@@ -29,7 +29,7 @@ SDK、PostgreSQL 資料庫和其他 Node.js 庫。
 
 - `GET /api/example`：示範 API 調用。
 
-請根據你的需要擴展和修改這些路由。
+請根據你的需要增加或修改這些路由。
 
 ## 有使用的套件
 
@@ -53,7 +53,7 @@ Heroku 的 Config Vars 功能來設置環境變量。
 
 ## 作者
 
-- **陳威廷**
+- **Eazy**
   - Email: [eazy_chen@icloud.com](mailto:eazy_chen@icloud.com)
 
 ## 貢獻指南
