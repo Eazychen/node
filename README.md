@@ -1,9 +1,6 @@
 # Node Practice
 
 [![Node.js](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Eazychen/node-practice)](https://github.com/Eazychen/node-practice)
-[![License ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-[![Dependencies Status](https://img.shields.io/david/Eazychen/node-practice)](https://david-dm.org/Eazychen/node-practice)
 
 ## 項目概述
 
