@@ -18,16 +18,20 @@ eventHandler = async (event) => {
 	console.log(event.message.text);
 };
 
-router.post("/webhook", line.middleware(config), (req, res) => {
-	Promise.all(req.body.events.map(eventHandler))
-		.then((result) => {
-			console.log("Received headers:", req.headers);
-			console.log("Received body:", req.body);
-			return res.status(200).json(result);
-		})
-		.catch((err) => {
-			console.error(err.stack);
-			return res.status(500).send("Error handling message");
-		});
-});
+router.post(
+	"/webhook",
+	console.log("Received headers:", req.headers),
+	console.log("Received body:", req.body),
+	line.middleware(config),
+	(req, res) => {
+		Promise.all(req.body.events.map(eventHandler))
+			.then((result) => {
+				return res.status(200).json(result);
+			})
+			.catch((err) => {
+				console.error(err.stack);
+				return res.status(500).send("Error handling message");
+			});
+	}
+);
 module.exports = router;
