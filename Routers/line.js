@@ -3,10 +3,13 @@ const router = express.Router();
 const line = require("@line/bot-sdk");
 
 require("dotenv").config();
+
 const config = {
 	channelSecret: process.env.CHANNEL_SECRET,
 	channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
 };
+
+console.log(config);
 
 eventHandler = async (event) => {
 	if (event.type !== "message" || event.message.type !== "text") {
