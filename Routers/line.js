@@ -11,6 +11,12 @@ const config = {
 
 console.log(config);
 
+if (!config.channelSecret || !config.channelAccessToken) {
+	console.log(
+		"LINE bot configuration error: missing channelSecret or channelAccessToken"
+	);
+}
+
 eventHandler = async (event) => {
 	if (event.type !== "message" || event.message.type !== "text") {
 		return Promise.resolve(null);
