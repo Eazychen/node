@@ -21,10 +21,11 @@ eventHandler = async (event) => {
 router.post("/webhook", line.middleware(config), (req, res) => {
 	Promise.all(req.body.events.map(eventHandler))
 		.then((result) => {
-			return res.json(result);
+			return res.status(200).json(result);
 		})
 		.catch((err) => {
 			console.log(err);
+			return res.status(500).send("Error handling message");
 		});
 });
 module.exports = router;
