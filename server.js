@@ -21,8 +21,6 @@ app.use(express.json());
 app.use("/api", lineRouter);
 app.use("/api", servicesRouter);
 
-app.options("*", cors(corsOptions));
-
 app.listen(process.env.PORT || 5001, () => {
 	console.log("server is running 5001");
 });

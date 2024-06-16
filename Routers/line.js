@@ -9,8 +9,6 @@ const config = {
 	channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
 };
 
-console.log(config);
-
 if (!config.channelSecret || !config.channelAccessToken) {
 	console.log(
 		"LINE bot configuration error: missing channelSecret or channelAccessToken"
@@ -25,8 +23,7 @@ eventHandler = async (event) => {
 };
 
 router.post("/webhook", line.middleware(config), (req, res) => {
-	console.log("Received headers:", req.headers);
-	console.log("Received body:", req.body);
+	console.log(config);
 	Promise.all(req.body.events.map(eventHandler))
 		.then((result) => {
 			return res.status(200).json(result);
