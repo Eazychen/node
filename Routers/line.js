@@ -22,7 +22,7 @@ eventHandler = async (event) => {
 	console.log(event.message.text);
 };
 
-router.post("/webhook", line.middleware(config), (req, res) => {
+router.post("/webhook", (req, res) => {
 	console.log(config);
 	Promise.all(req.body.events.map(eventHandler))
 		.then((result) => {
