@@ -20,8 +20,10 @@ eventHandler = async (event) => {
 
 router.post(
 	"/webhook",
-	console.log("Received headers:", req.headers),
-	console.log("Received body:", req.body),
+	(res, req) => {
+		console.log("Received headers:", req.headers);
+		console.log("Received body:", req.body);
+	},
 	line.middleware(config),
 	(req, res) => {
 		Promise.all(req.body.events.map(eventHandler))
