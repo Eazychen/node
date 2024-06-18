@@ -10,10 +10,11 @@ const config = {
 };
 
 eventHandler = async (event) => {
-	if (event.type !== "message" || event.message.type !== "text") {
-		return Promise.resolve(null);
+	if (event.type === "message" && event.message.type === "text") {
+		console.log(`Received message: ${event.message.text}`);
+	} else {
+		console.log(`Received event type: ${event.type}`);
 	}
-	console.log(event.message.text);
 };
 
 router.post("/webhook", line.middleware(config), (req, res) => {
