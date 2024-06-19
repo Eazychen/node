@@ -16,7 +16,7 @@ eventHandler = async (event) => {
 		// 回覆文本消息
 		const replyText = {
 			type: "text",
-			text: "避免訊息量過大，請耐心等候回覆(此為機器人自動回覆)。請您稍後，將有專人為您服務。",
+			text: "避免訊息量過大，請耐心等候回覆(此為機器人自動回覆)。請您稍後，將有專人為您回覆服務。",
 		};
 		const stickerMessage = {
 			type: "sticker",
