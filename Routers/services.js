@@ -29,7 +29,6 @@ const saveFormData = async (name, phone, service) => {
 	const values = [name, phone, service];
 	try {
 		await client.query(query, values);
-		console.log(values);
 	} catch (err) {
 		console.log("Error saving form data", err);
 		throw err;

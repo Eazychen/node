@@ -9,9 +9,30 @@ const config = {
 	channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
 };
 
+// MessagingApiClient是LINE官方提供的Node.js SDK
+
+const client = new messagingApi.MessagingApiClient(config);
+
 eventHandler = async (event) => {
 	if (event.type === "message" && event.message.type === "text") {
 		console.log(`Received message: ${event.message.text}`);
+		// 回覆文本消息
+		const replyText = {
+			type: "text",
+			text: "請您稍後，將有專人為您服務。",
+		};
+		const stickerMessage = {
+			type: "sticker",
+			packageId: "6136", // 貼圖包 ID
+			stickerId: "10551377", // 貼圖 ID
+		};
+		try {
+			await client.replyMessage(event.Token, [replyText, stickerMessage]);
+			console.log("Messages replied successfully");
+		} catch (err) {
+			console.error(`Error replying message: ${error}`);
+			throw error;
+		}
 	} else {
 		console.log(`Received event type: ${event.type}`);
 	}
