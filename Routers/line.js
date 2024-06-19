@@ -9,9 +9,7 @@ const config = {
 	channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
 };
 
-// MessagingApiClient是LINE官方提供的Node.js SDK
-
-const client = new messagingApi.MessagingApiClient(config);
+const client = new line.Client(config);
 
 eventHandler = async (event) => {
 	if (event.type === "message" && event.message.type === "text") {
@@ -27,7 +25,7 @@ eventHandler = async (event) => {
 			stickerId: "10551377", // 貼圖 ID
 		};
 		try {
-			await client.replyMessage(event.Token, [replyText, stickerMessage]);
+			await client.replyMessage(event.replyToken, [replyText, stickerMessage]);
 			console.log("Messages replied successfully");
 		} catch (err) {
 			console.error(`Error replying message: ${error}`);
