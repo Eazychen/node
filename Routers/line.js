@@ -14,7 +14,7 @@ const client = new line.Client(config);
 const redis = new Redis(process.env.REDIS_URL);
 
 const eventHandler = async (event) => {
-	if (event.type !== "message" || event.message.type == "text") {
+	if (event.type !== "message" || event.message.type !== "text") {
 		return Promise.resolve(null);
 	}
 	const userId = event.source.userId;
@@ -56,6 +56,7 @@ const eventHandler = async (event) => {
 		packageId: "6136", // 貼圖包 ID
 		stickerId: "10551377", // 貼圖 ID
 	};
+
 	try {
 		await client.replyMessage(event.replyToken, [replyText, stickerMessage]);
 		console.log(`Replied to message: ${messageText}`);
