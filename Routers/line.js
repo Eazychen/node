@@ -13,7 +13,15 @@ const config = {
 const client = new line.Client(config);
 const redis = new Redis(process.env.REDIS_URL);
 
+redis.on("connect", () => {
+	console.log("Connected to Redis");
+});
+redis.on("error", (err) => {
+	console.error("Redis connection error: ", err);
+});
+
 const eventHandler = async (event) => {
+	console.log("Received event:", event);
 	if (event.type !== "message" || event.message.type !== "text") {
 		return Promise.resolve(null);
 	}
@@ -25,6 +33,7 @@ const eventHandler = async (event) => {
 	// redis.incr：這個命令會對指定的鍵進行原子性遞增操作。如果鍵不存在，會自動創建並將其值設置為 1。
 	const limitKey = `rate_limit:${userId}`;
 	const currentCount = await redis.incr(limitKey);
+	console.log(`Current count for ${userId}: ${currentCount}`);
 
 	if (currentCount === 1) {
 		// 第一次設置過期時間
@@ -40,7 +49,7 @@ const eventHandler = async (event) => {
 	const cacheKey = `${userId}:${messageText}`;
 	const cached = await redis.get(cacheKey);
 	if (cached) {
-		console.log(`Already replied to message:${messageText}`);
+		console.log(`Already replied to message: ${messageText}`);
 		return Promise.resolve(null);
 	}
 
