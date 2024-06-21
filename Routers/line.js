@@ -30,6 +30,7 @@ const eventHandler = async (event) => {
 		// 第一次設置過期時間
 		await redis.expire(limitKey, 60); // 60 秒後重置計數
 	}
+
 	if (currentCount > 5) {
 		console.log(`User ${userId} is rate limited`);
 		return Promise.resolve(null);
@@ -43,7 +44,7 @@ const eventHandler = async (event) => {
 		return Promise.resolve(null);
 	}
 
-	await redis.set(cacheKey, "true", "EX", 600);
+	await redis.set(cacheKey, "true", "EX", 60);
 
 	// 回覆消息
 	const replyText = {
@@ -55,7 +56,12 @@ const eventHandler = async (event) => {
 		packageId: "6136", // 貼圖包 ID
 		stickerId: "10551377", // 貼圖 ID
 	};
-	return client.replyMessage(event.replyToken, [replyText, stickerMessage]);
+	try {
+		await client.replyMessage(event.replyToken, [replyText, stickerMessage]);
+		console.log(`Replied to message: ${messageText}`);
+	} catch (err) {
+		console.error(`Error replying to message: ${err}`);
+	}
 };
 
 router.post("/webhook", line.middleware(config), (req, res) => {
